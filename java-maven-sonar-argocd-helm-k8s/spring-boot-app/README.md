@@ -68,3 +68,14 @@ sudo apt-get update && sudo apt-get upgrade -y
 Hurray !! Now you can access the `SonarQube Server` on `http://<ip-address>:9000` 
 
 
+To automatically update the image in the manifest folder we use
+```
+sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
+                    
+// Purpose: This command uses the sed tool to perform an in-place replacement in the deployment.yml file.
+// Action: It searches for the placeholder replaceImageTag in the deployment.yml file located at java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/.
+// Replacement: It replaces replaceImageTag with the value of the BUILD_NUMBER variable throughout the file. This typically updates the image tag of the container in the Kubernetes deployment to a new version represented by BUILD_NUMBER.
+// BUILD NUMBER is the current build of jenkins pipeline.
+```
+
+
