@@ -57,12 +57,6 @@ pipeline {
                     git config user.name "Sarvesh Shenvi"
                     BUILD_NUMBER=${BUILD_NUMBER}
                     sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
-                    
-                    // Purpose: This command uses the sed tool to perform an in-place replacement in the deployment.yml file.
-                    // Action: It searches for the placeholder replaceImageTag in the deployment.yml file located at java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/.
-                    // Replacement: It replaces replaceImageTag with the value of the BUILD_NUMBER variable throughout the file. This typically updates the image tag of the container in the Kubernetes deployment to a new version represented by BUILD_NUMBER.
-                    // BUILD NUMBER is the current build of jenkins pipeline.
-
                     git add java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
                     git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
