@@ -13,6 +13,13 @@ Prerequisites:
    -  Helm package manager
    -  Argo CD
 
+After reaching the end of CI step we start CD, where we install ArgoCD using OperatorHub of Kubernetes.
+https://operatorhub.io/operator/argocd-operator
+
+Install ArgoCD according to the steps mentioned in the above Hyperlink
+
+It will take little time to start the operator.
+
 Steps:
 
     1. Install the necessary Jenkins plugins:
